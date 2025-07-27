@@ -118,38 +118,38 @@ const Manager = () => {
                 <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-teal-300 opacity-20 blur-[100px]"></div>
             </div>
 
-            <div className="px-2 md:px-6 md:mycontainer min-h-[89.5vh]">
+            <div className="px-2 md:px-6 md:mycontainer min-h-[82vh]">
                 <h1 className='text-4xl font-bold mt-5 text-center'>
                     <span className="text-cyan-700"></span>
                     Iron
                     <span className="text-cyan-700">Vault</span>
                 </h1>
-                <p className='text-lg text-cyan-900 text-center'>Your Password Manager</p>
+                <p className='text-lg font-bold pb-3 text-cyan-900 text-center'>Your Password Manager</p>
 
-                <div className="text-black flex flex-col p-4 gap-10 items-center mx-4 md:mx-18">
-                    <input value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} className='bg-white rounded-full w-full h-12 text-black border border-cyan-700 py-1 p-4' type="text" placeholder='Website Name' />
+                <div className="text-black flex flex-col py-1 px-5 gap-7 items-center mx-4 md:mx-18">
+                    <input value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} className='bg-white rounded-full w-full h-10 text-black border border-cyan-700 py-1 p-4' type="text" placeholder='Website Name' />
 
                     <div className="flex md:flex-row flex-col w-full justify-between gap-7">
-                        <input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} className='bg-white rounded-full w-full h-12 text-black border border-cyan-700 py-1 p-4' type="text" placeholder='Username' />
+                        <input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} className='bg-white rounded-full w-full h-10 text-black border border-cyan-700 py-1 px-4' type="text" placeholder='Username' />
 
                         <div className="relative w-full"> 
-                            <input ref={passRef} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className='bg-white rounded-full w-full h-12 text-black border border-cyan-700 py-1 p-4' type="password" placeholder='Password' />
-                            <span onClick={showPass} className="absolute right-[1px] top-[2px] mx-3 mt-2 cursor-pointer">
+                            <input ref={passRef} value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} className='bg-white rounded-full w-full h-10 text-black border border-cyan-700 py-1 px-4' type="password" placeholder='Password' />
+                            <span onClick={showPass} className="absolute right-[1px] top-[2px] mx-2 mt-1 cursor-pointer">
                                 <img ref={ref} src="/image/eye.png" alt="" width={30} className="p-1" />
                             </span>
                         </div>
                     </div>
 
-                    <button onClick={savePass} className='bg-cyan-600 text-white rounded-full py-2 px-4 flex items-center justify-center gap-4 border-2 border-cyan-900 w-fit hover:bg-cyan-700 transition-all duration-300'>
+                    <button onClick={savePass} className='bg-cyan-600 text-white rounded-full pb-1 px-2 flex items-center justify-center gap-2 border-2 border-cyan-900 w-fit hover:bg-cyan-700 transition-all duration-300'>
                         <lord-icon src="https://cdn.lordicon.com/jgnvfzqg.json" trigger="hover"></lord-icon>
                         Save
                     </button>
                 </div>
 
-                <div className="passwords">
-                    <h2 className='text-2xl font-bold py-4'>Your Passwords</h2>
+                <div className="passwords md:px-8">
+                    <h2 className='text-xl font-bold pt-4 pb-2'>Your Passwords</h2>
                     {passwordArray.length === 0 && (
-                        <div className='text-lg font-bold text-cyan-900'>No passwords saved yet!</div>
+                        <div className='text-md font-bold text-cyan-900'>No passwords saved yet!</div>
                     )}
 
                     {passwordArray.length !== 0 && (
@@ -157,10 +157,10 @@ const Manager = () => {
                             <table className="table-auto w-full rounded-md overflow-hidden mb-7 min-w-[600px]">
                                 <thead className='bg-cyan-900 text-white font-bold'>
                                     <tr>
-                                        <th className="border border-gray-300 px-4 py-2">Website</th>
-                                        <th className="border border-gray-300 px-4 py-2">Username</th>
-                                        <th className="border border-gray-300 px-4 py-2">Password</th>
-                                        <th className="border border-gray-300 px-4 py-2">Tools</th>
+                                        <th className="border border-gray-300 px-2 py-2">Username</th>
+                                        <th className="border border-gray-300 px-2 py-2">Website</th>
+                                        <th className="border border-gray-300 px-2 py-2">Password</th>
+                                        <th className="border border-gray-300 px-2 py-2">Tools</th>
                                     </tr>
                                 </thead>
                                 <tbody className='bg-cyan-100'>
@@ -185,7 +185,7 @@ const Manager = () => {
                                                 </td>
                                                 <td className="border border-gray-300 py-2 text-center">
                                                     <div className='flex items-center justify-center'>
-                                                        <span>{item.password}</span>
+                                                        <span>{"*".repeat(item.password.length)}</span>
                                                         <div className="copy size-7 cursor-pointer" onClick={() => copyText(item.password)}>
                                                             <lord-icon style={{ width: '25px', height: '25px', paddingTop: '3px', paddingLeft: '3px' }} src="https://cdn.lordicon.com/iykgtsbt.json" trigger="hover"></lord-icon>
                                                         </div>
